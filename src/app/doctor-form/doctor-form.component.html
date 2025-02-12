@@ -1,0 +1,100 @@
+<div class="container">
+    <div style="background-color: #0c1027; color: white; padding: 10px">
+        <h2>Registration</h2>
+    </div>
+    <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+        <label for="phone">Contact Number:</label>
+        <div class="style-container">
+            <input id="phone" type="text" formControlName="phone" />
+            <img src="assets/addressBook.png" alt="Address Book" class="icon" />
+        </div>
+        <div *ngIf="submitted && doctorForm.get('phone')?.invalid">
+            <span *ngIf="doctorForm.get('phone')?.errors?.['required']">Contact number is required.</span>
+            <span *ngIf="doctorForm.get('phone')?.errors?.['pattern']">Enter a valid 10-digit number.</span>
+        </div>
+
+        <label for="email">Email:</label>
+        <div class="style-container">
+            <input id="email" type="email" formControlName="email" />
+            <div *ngIf="submitted && doctorForm.get('email')?.invalid">
+                <span *ngIf="doctorForm.get('email')?.errors?.['required']">Email is required.</span>
+                <span *ngIf="doctorForm.get('email')?.errors?.['email']">Invalid email format.</span>
+            </div>
+        </div>
+
+        <label for="fullName">Full Name:</label>
+        <div class="style-container">
+            <input id="fullName" type="text" formControlName="fullName" />
+            <div *ngIf="submitted && doctorForm.get('fullName')?.invalid">
+                <span *ngIf="doctorForm.get('fullName')?.errors?.['required']">Full Name is required.</span>
+                <span *ngIf="doctorForm.get('fullName')?.errors?.['minlength']">Must be at least 3 characters.</span>
+            </div>
+        </div>
+
+        <label for="password">Password:</label>
+        <div class="style-container">
+            <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password" />
+            <img [src]="
+          showPassword ? 'assets/passwordHide.png' : 'assets/passwordShow.png'
+        " alt="Show/Hide" (click)="showPassword = !showPassword" class="eye-icon" />
+        </div>
+        <div *ngIf="submitted && doctorForm.get('password')?.invalid">
+            <span *ngIf="doctorForm.get('password')?.errors?.['required']">Password is required.</span>
+            <span *ngIf="doctorForm.get('password')?.errors?.['minlength']">Must be at least 8 characters.</span>
+            <span *ngIf="doctorForm.get('password')?.errors?.['pattern']">Must contain at least 1 digit and 1 special
+                character.</span>
+        </div>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <div class="style-container">
+            <input id="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
+                formControlName="confirmPassword" />
+            <img [src]="
+          showConfirmPassword
+            ? 'assets/passwordHide.png'
+            : 'assets/passwordShow.png'
+        " alt="Show/Hide" (click)="showConfirmPassword = !showConfirmPassword" class="eye-icon" />
+        </div>
+        <div *ngIf="submitted && doctorForm.get('confirmPassword')?.invalid">
+            <span *ngIf="doctorForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+        </div>
+        <div *ngIf="submitted && doctorForm.errors?.['mismatch']">
+            <span>Passwords do not match.</span>
+        </div>
+
+        <label for="admissionDate">Date of Admission:</label>
+        <div class="style-container">
+            <input id="admissionDate" type="date" formControlName="admissionDate" />
+            <div *ngIf="submitted && doctorForm.get('admissionDate')?.invalid">
+                <span>Date of Admission is required.</span>
+            </div>
+        </div>
+
+        <div formArrayName="degrees">
+            <div *ngFor="let degree of degrees.controls; let i = index">
+                <label>Degree {{ i + 1 }}</label>
+                <input type="text" [formControlName]="i" placeholder="Enter degree" />
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" class="add-btn" (click)="addDegree()">
+                Add Another
+            </button>
+        </div>
+
+        <label for="onlineConsultFee">Online Consult Fee:</label>
+        <div class="style-container">
+            <img src="assets\₹.png" alt="" class="currency-icon" />
+            <input id="onlineConsultFee" type="number" formControlName="onlineConsultFee" />
+        </div>
+
+        <label for="inPersonConsultFee">In-Person Consult Fee:</label>
+        <div class="style-container">
+            <img src="assets\₹.png" alt="" class="currency-icon" />
+            <input id="inPersonConsultFee" type="number" formControlName="inPersonConsultFee" />
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>

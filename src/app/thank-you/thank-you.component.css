@@ -1,0 +1,28 @@
+.thank-you-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .btn {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  
+  .primary {
+    background-color: #218838;
+    color: white;
+    border: none;
+  }
+  
+  .secondary {
+    background-color: white;
+    color: #218838;
+    border: 2px solid #218838;
+  }
+  

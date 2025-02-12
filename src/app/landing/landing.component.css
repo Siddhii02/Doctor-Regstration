@@ -1,0 +1,39 @@
+.landing-container {
+    text-align: center;
+    background-color: #0C1027;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .illustration {
+    width: 200px;
+    margin: 20px 0;
+  }
+  
+  .btn {
+    width: 80%;
+    max-width: 250px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .register {
+    background-color: #218838;
+    color: white;
+    border: none;
+  }
+  
+  .login, .view {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  

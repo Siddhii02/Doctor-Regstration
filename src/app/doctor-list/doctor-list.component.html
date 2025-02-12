@@ -1,0 +1,27 @@
+<div class="container">
+    <div style="background-color: #0c1027; color: white; padding: 10px">
+        <h2>Registered Doctors</h2>
+    </div>
+  
+    <div *ngFor="let doctor of doctors" class="doctor-card">
+        <div class="doctor-profile">
+            <img src="assets/Oval.png" alt="Profile Background" class="profile-oval">
+            <img src="assets/doctor-img.jpg" alt="Doctor Image" class="doctor-image">
+          </div>
+
+      <div class="doctor-info">
+        <h3>{{ doctor.fullName }}</h3>
+        <p>{{ doctor.degrees.join(', ') }}</p>
+        <p><b>Fees:</b> ₹{{ doctor.onlineConsultFee }} Online | ₹{{ doctor.inPersonConsultFee }} In-Person</p>
+        <button class="book-appointment">Book Appointment</button>
+      </div>
+  
+      <button class="delete-btn" (click)="deleteDoctor(doctor.id)" style="font-size: 30px; font-weight: bold;">🗑</button>
+    </div>
+  
+    <button class="load-more" (click)="loadDoctors()">Load More</button>
+
+    <button class="go-home" (click)="goToHome()">Go To Home</button>
+    
+  </div>
+  
